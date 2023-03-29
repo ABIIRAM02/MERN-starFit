@@ -8,6 +8,14 @@ let userStructure = new mongoose.Schema(
         type:String,
         required:true
     },
+    bmi:
+    {
+        type:Number,
+    },
+    health:
+    {
+        type:String,
+    },
     age:
     {
         type:Number,

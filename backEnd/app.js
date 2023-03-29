@@ -99,7 +99,38 @@ app.post('/signup', async (req, res) => {
       req.body.personType == "user"
        ?
       await user.findByIdAndUpdate(req.body.id, {name : req.body.name}).exec()
-      .then((updatedDoc)=>
+      .then(()=>
+      {
+          res.send({message : "updated"});
+      })
+      .catch((err)=>
+      {
+        console.error(err);
+      })
+       :
+      await trainer.findByIdAndUpdate(req.body.id , {name : req.body.name}).exec()
+      .then((res)=>
+      {
+        res.send({message : "updated"});
+      })
+      .catch((err)=>
+      {
+        console.error(err);
+      })
+
+
+    } catch (error) {
+      res.send(error)
+      console.log(error);
+    }
+  })
+  app.put('/bmi' ,async (req , res)=>
+  {
+    try {
+      req.body.personType == "user"
+       ?
+      await user.findByIdAndUpdate(req.body.id, {bmi : req.body.bmi , health : req.body.health}).exec()
+      .then(()=>
       {
           res.send({message : "updated"});
       })
